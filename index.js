@@ -50,12 +50,27 @@ document.addEventListener("DOMContentLoaded", function() {
         updateCartDisplay();
     }
 
-    const buttons = this.getElementsByTagName("button");
-    for (let button of buttons) {
-        button.addEventListener('click', function() {
-            const name = this.getAttribute('data-name');
-            const price = parseFloat(this.getAttribute('data-price'));
-            addToCart(name, price);
-        });
-    }
+    // Fetch products from db.json
+    fetch('db.json')
+        .then(response => response.json())
+        .then(data => {
+            const productContainer = document.getElementById('product-container');
+            data.products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.setAttribute('id', 'products');
+                productDiv.innerHTML = `
+                    <p>${product.name}</p>
+                    <p>${product.price}</p>
+                    <button data-name="${product.name}" data-price="${product.price}">ADD</button>
+                `;
+                productContainer.appendChild(productDiv);
+
+                productDiv.querySelector('button').addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    addToCart(name, price);
+                });
+            });
+        })
+        .catch(error => console.error('Error fetching products:', error));
 });

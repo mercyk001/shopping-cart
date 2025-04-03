@@ -1,0 +1,36 @@
+{
+    "products": [
+      {
+        "name": "Milk",
+        "price": 50
+      },
+      {
+        "name": "Bread",
+        "price": 70
+      },
+      {
+        "name": "Sugar",
+        "price": 100
+      },
+      {
+        "name": "Butter",
+        "price": 130
+      },
+      {
+        "name": "Cheese",
+        "price": 200
+      },
+      {
+        "name": "Eggs",
+        "price": 300
+      },
+      {
+        "name": "Chicken",
+        "price": 500
+      },
+      {
+        "name": "Fish",
+        "price": 700
+      }
+    ]
+  }
